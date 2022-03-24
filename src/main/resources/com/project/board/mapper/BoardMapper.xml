@@ -31,4 +31,9 @@
         WHERE board_no = #{boardNo}
     </update>
 
+    <delete id="delete">
+        DELETE FROM board
+        WHERE board_no = #{boardNo}
+    </delete>
+
 </mapper>

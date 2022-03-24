@@ -13,4 +13,5 @@ public interface BoardMapper {
     void create(Board board) throws Exception;
     Board read(Long boardNo) throws Exception;
     void update(Board board) throws Exception;
+    void delete(Long boardNo) throws Exception;
 }

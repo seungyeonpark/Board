@@ -32,4 +32,9 @@ public class BoardServiceImpl implements BoardService{
     public void modify(Board board) throws Exception {
         mapper.update(board);
     }
+
+    @Override
+    public void remove(Long boardNo) throws Exception {
+        mapper.delete(boardNo);
+    }
 }

@@ -60,4 +60,11 @@ public class BoardController {
 
         return "redirect:/board/list";
     }
+
+    @GetMapping("/remove/{boardNo}")
+    public String remove(@PathVariable Long boardNo) throws Exception {
+
+        service.remove(boardNo);
+        return "redirect:/board/list";
+    }
 }
