@@ -27,4 +27,9 @@ public class BoardServiceImpl implements BoardService{
     public Board read(Long boardNo) throws Exception {
         return mapper.read(boardNo);
     }
+
+    @Override
+    public void modify(Board board) throws Exception {
+        mapper.update(board);
+    }
 }

@@ -44,4 +44,20 @@ public class BoardController {
         model.addAttribute("board", service.read(boardNo));
         return "view";
     }
+
+    @GetMapping("/modify/{boardNo}")
+    public String modifyForm(@PathVariable Long boardNo, Model model) throws Exception {
+
+        model.addAttribute("board", service.read(boardNo));
+        return "edit";
+    }
+
+    @PostMapping("/modify/{boardNo}")
+    public String modify(@PathVariable Long boardNo, Board board) throws Exception {
+
+        board.setBoardNo(boardNo);
+        service.modify(board);
+
+        return "redirect:/board/list";
+    }
 }

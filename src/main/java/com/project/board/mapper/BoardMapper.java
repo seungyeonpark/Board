@@ -12,4 +12,5 @@ public interface BoardMapper {
     List<Board> list() throws Exception;
     void create(Board board) throws Exception;
     Board read(Long boardNo) throws Exception;
+    void update(Board board) throws Exception;
 }
