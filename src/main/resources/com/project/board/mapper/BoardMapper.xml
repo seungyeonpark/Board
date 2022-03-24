@@ -19,4 +19,10 @@
         VALUES (#{title}, #{content}, #{writer})
     </insert>
 
+    <select id="read" resultType="Board">
+        SELECT board_no, title, content, writer, reg_date
+        FROM board
+        WHERE board_no = #{boardNo}
+    </select>
+
 </mapper>

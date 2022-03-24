@@ -22,4 +22,9 @@ public class BoardServiceImpl implements BoardService{
     public void register(Board board) throws Exception {
         mapper.create(board);
     }
+
+    @Override
+    public Board read(Long boardNo) throws Exception {
+        return mapper.read(boardNo);
+    }
 }
