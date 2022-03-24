@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공지사항</title>
+    <link rel="stylesheet" href="../css/css.css" th:href="@{/css/css.css}">
+</head>
+<body>
+    <div class="board_wrap">
+        <div class="board_title">
+            <strong>공지사항</strong>
+            <p>공지사항을 빠르고 정확하게 안내해드립니다.</p>
+        </div>
+        <form action="/board/register" method="post" class="board_write_wrap">
+            <div class="board_write">
+                <div class="title">
+                    <dl>
+                        <dt>제목</dt>
+                        <dd>
+                            <input type="text" placeholder="제목 입력" th:field="${board.title}">
+                            <div class="field-error" th:errors="${board.title}">제목 오류</div>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="info">
+                    <dl>
+                        <dt>작성자</dt>
+                        <dd>
+                            <input type="text" placeholder="글쓴이 입력" th:field="${board.writer}">
+                            <div class="field-error" th:errors="${board.title}">작성자 오류</div>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="cont">
+                    <textarea placeholder="내용 입력" th:field="${board.content}"></textarea>
+                    <div class="field-error" th:errors="${board.title}">내용 오류</div>
+                </div>
+            </div>
+            <div class="bt_wrap">
+                <input type="submit" class="on" value="등록">
+                <a href="index.html" th:href="@{/board/list}">취소</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
