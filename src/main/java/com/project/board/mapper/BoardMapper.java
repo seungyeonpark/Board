@@ -10,4 +10,5 @@ import java.util.List;
 @Mapper
 public interface BoardMapper {
     List<Board> list() throws Exception;
+    void create(Board board) throws Exception;
 }

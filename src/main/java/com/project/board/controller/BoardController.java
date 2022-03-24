@@ -1,10 +1,12 @@
 package com.project.board.controller;
 
+import com.project.board.domain.Board;
 import com.project.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -19,5 +21,19 @@ public class BoardController {
 
         model.addAttribute("list", service.list());
         return "list";
+    }
+
+    @GetMapping("/register")
+    public String registerForm(Board board, Model model) {
+
+        model.addAttribute("board", board);
+        return "write";
+    }
+
+    @PostMapping("/register")
+    public String register(Board board) throws Exception {
+
+        service.register(board);
+        return "redirect:/board/list";
     }
 }

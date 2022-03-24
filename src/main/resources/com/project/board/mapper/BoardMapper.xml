@@ -14,4 +14,9 @@
 		]]>
     </select>
 
+    <insert id="create" useGeneratedKeys="true" keyProperty="boardNo">
+        INSERT INTO board (title, content, writer)
+        VALUES (#{title}, #{content}, #{writer})
+    </insert>
+
 </mapper>
