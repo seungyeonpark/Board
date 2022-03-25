@@ -1,6 +1,7 @@
 package com.project.board.service;
 
 import com.project.board.domain.Board;
+import com.project.board.domain.PageRequest;
 import com.project.board.mapper.BoardMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,8 +15,13 @@ public class BoardServiceImpl implements BoardService{
     private final BoardMapper mapper;
 
     @Override
-    public List<Board> list() throws Exception {
-        return mapper.list();
+    public int count() throws Exception {
+        return mapper.count();
+    }
+
+    @Override
+    public List<Board> list(PageRequest pageRequest) throws Exception {
+        return mapper.list(pageRequest);
     }
 
     @Override
