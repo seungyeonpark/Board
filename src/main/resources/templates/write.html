@@ -18,8 +18,8 @@
                     <dl>
                         <dt th:text="#{label.title}">title</dt>
                         <dd>
-                            <input type="text" placeholder="제목 입력" th:field="${board.title}">
-                            <div class="field-error" th:errors="${board.title}">제목 오류</div>
+                            <input type="text" placeholder="제목 입력" th:field="${board.title}" th:errorclass="field-error">
+                            <div class="field-error" th:errors="${board.title}">title error</div>
                         </dd>
                     </dl>
                 </div>
@@ -27,14 +27,14 @@
                     <dl>
                         <dt th:text="#{label.writer}">writer</dt>
                         <dd>
-                            <input type="text" placeholder="글쓴이 입력" th:field="${board.writer}">
-                            <div class="field-error" th:errors="${board.title}">작성자 오류</div>
+                            <input type="text" placeholder="글쓴이 입력" th:field="${board.writer}" th:errorclass="field-error">
+                            <div class="field-error" th:errors="${board.writer}">writer error</div>
                         </dd>
                     </dl>
                 </div>
                 <div class="cont">
-                    <textarea placeholder="내용 입력" th:field="${board.content}"></textarea>
-                    <div class="field-error" th:errors="${board.title}">내용 오류</div>
+                    <textarea placeholder="내용 입력" th:field="${board.content}" th:errorclass="field-error"></textarea>
+                    <div class="field-error" th:errors="${board.content}">content error</div>
                 </div>
             </div>
             <div class="bt_wrap">

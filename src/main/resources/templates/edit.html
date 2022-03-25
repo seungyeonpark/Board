@@ -17,7 +17,10 @@
                 <div class="title">
                     <dl>
                         <dt th:text="#{label.title}">title</dt>
-                        <dd><input type="text" placeholder="제목 입력" value="글 제목이 들어갑니다" th:field="${board.title}"></dd>
+                        <dd>
+                            <input type="text" placeholder="제목 입력" value="글 제목이 들어갑니다" th:field="${board.title}" th:errorclass="field-error">
+                            <div class="field-error" th:errors="${board.title}">title error</div>
+                        </dd>
                     </dl>
                 </div>
                 <div class="info">

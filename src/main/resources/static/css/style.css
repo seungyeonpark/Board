@@ -383,3 +383,8 @@ a {
     color: #999;
     text-decoration: none;
 }
+
+.field-error {
+    border-color: #dc3545;
+    color: #dc3545;
+}
