@@ -10,21 +10,25 @@
     <div class="board_wrap">
         <div class="header">
             <div class="board_title">
-                <strong>공지사항</strong>
-                <p>공지사항을 빠르고 정확하게 안내해드립니다.</p>
+                <strong th:text="#{page.title}">title</strong>
+                <p th:text="#{page.subtitle}">subtitle</p>
             </div>
         </div>
         <div class="board_list_wrap">
             <div class="board_list">
                 <div class="top">
-                    <div class="num">번호</div>
-                    <div class="title">제목</div>
-                    <div class="writer">글쓴이</div>
-                    <div class="date">작성일</div>
+                    <div class="num" th:text="#{label.no}">no</div>
+                    <div class="title" th:text="#{label.title}">title</div>
+                    <div class="writer" th:text="#{label.writer}">writer</div>
+                    <div class="date" th:text="#{label.date}">date</div>
                 </div>
                 <div th:each="board : ${list}">
                     <div class="num" th:text="${board.boardNo}">5</div>
-                    <div class="title"><a href="view.html" th:href="@{/board/read/{boardNo}(boardNo=${board.boardNo})}" th:text="${board.title}">글 제목이 들어갑니다.</a></div>
+                    <div class="title">
+                        <a href="view.html" th:href="@{/board/read/{boardNo}(boardNo=${board.boardNo})}" th:text="${board.title}">
+                            글 제목이 들어갑니다.
+                        </a>
+                    </div>
                     <div class="writer" th:text="${board.writer}">홍길동</div>
                     <div class="date" th:text="${{board.regDate}}">2022.2.15</div>
                 </div>
@@ -41,7 +45,7 @@
                 <a href="#" class="bt last">>></a>
             </div>
             <div class="bt_wrap">
-                <a href="write.html" th:href="@{/board/register}" class="on">등록</a>
+                <a href="write.html" th:href="@{/board/register}" class="on" th:text="#{button.write}">write</a>
             </div>
         </div>
     </div>

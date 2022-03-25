@@ -9,20 +9,20 @@
 <body>
     <div class="board_wrap">
         <div class="board_title">
-            <strong>공지사항</strong>
-            <p>공지사항을 빠르고 정확하게 안내해드립니다.</p>
+            <strong th:text="#{page.title}">title</strong>
+            <p th:text="#{page.subtitle}">subtitle</p>
         </div>
         <form action="" method="post" class="board_write_wrap">
             <div class="board_write">
                 <div class="title">
                     <dl>
-                        <dt>제목</dt>
+                        <dt th:text="#{label.title}">title</dt>
                         <dd><input type="text" placeholder="제목 입력" value="글 제목이 들어갑니다" th:field="${board.title}"></dd>
                     </dl>
                 </div>
                 <div class="info">
                     <dl>
-                        <dt>글쓴이</dt>
+                        <dt th:text="#{label.writer}">writer</dt>
                         <dd><input type="text" placeholder="글쓴이 입력" value="홍길동" th:field="${board.writer}" readonly></dd>
                     </dl>
                 </div>
@@ -31,8 +31,8 @@
                 </div>
             </div>
             <div class="bt_wrap">
-                <input type="submit" class="on" value="수정">
-                <a href="view.html" th:href="@{/board/list}">취소</a>
+                <input type="submit" class="on" th:value="#{button.edit}">
+                <a href="view.html" th:href="@{/board/list}" th:text="#{button.cancel}">cancel</a>
             </div>
         </form>
     </div>
