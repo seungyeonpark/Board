@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 @Mapper
 public interface BoardMapper {
-    public int count() throws Exception;
+    Integer count() throws Exception;
     List<Board> list(PageRequest pageRequest) throws Exception;
     void create(Board board) throws Exception;
     Board read(Long boardNo) throws Exception;

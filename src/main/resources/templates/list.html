@@ -35,12 +35,13 @@
             </div>
             <div class="board_page">
                 <a th:href="@{/board/list(page=${pagination.startPage-pagination.displayListNum})}"
-                   class="bt prev" th:if="${pagination.prev}">prev</a>
+                   class="bt prev" th:if="${pagination.prev}">&lt;</a>
                 <a th:each="i : ${#numbers.sequence(pagination.startPage, pagination.endPage)}"
                    th:classappend="${pageRequest.page == i} ? 'on'"
                    th:href="@{/board/list(page=${i})}"
                    th:text="${i}" class="num">1</a>
-                <a th:href="@{/board/list(page=${pagination.endPage+1})}" class="bt next" th:if="${pagination.next}">next</a>
+                <a th:href="@{/board/list(page=${pagination.endPage+1})}"
+                   class="bt next" th:if="${pagination.next}">&gt;</a>
             </div>
             <div class="bt_wrap">
                 <a href="write.html" th:href="@{/board/register}" class="on" th:text="#{button.write}">write</a>

@@ -23,14 +23,12 @@ public class BoardController {
     @GetMapping("/list")
     public String list(@ModelAttribute PageRequest pageRequest, Model model) throws Exception {
 
-        model.addAttribute("list", service.list(pageRequest));
-
         log.info("pageRequest = {}", pageRequest);
 
-        Pagination pagination = new Pagination();
-        pagination.setPageRequest(pageRequest);
-        pagination.setTotalCount(service.count());
+        Integer totalCount = service.count();
+        Pagination pagination = new Pagination(totalCount, pageRequest);
 
+        model.addAttribute("list", service.list(pageRequest));
         model.addAttribute("pagination", pagination);
 
         return "list";

@@ -15,7 +15,7 @@ public class BoardServiceImpl implements BoardService{
     private final BoardMapper mapper;
 
     @Override
-    public int count() throws Exception {
+    public Integer count() throws Exception {
         return mapper.count();
     }
 

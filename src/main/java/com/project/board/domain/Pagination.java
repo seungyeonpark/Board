@@ -13,17 +13,14 @@ public class Pagination {
     private boolean prev;
     private boolean next;
 
-    private int displayListNum = 10;
+    private final int displayListNum = 10;
 
     private PageRequest pageRequest;
 
-    public void setTotalCount(int totalCount) {
+    public Pagination(int totalCount, PageRequest pageRequest) {
         this.totalCount = totalCount;
-        calcData();
-    }
-
-    public void setPageRequest(PageRequest pageRequest) {
         this.pageRequest = pageRequest;
+        calcData();
     }
 
     private void calcData() {

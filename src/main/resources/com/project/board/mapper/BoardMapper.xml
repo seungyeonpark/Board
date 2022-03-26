@@ -5,7 +5,7 @@
 
 <mapper namespace="com.project.board.mapper.BoardMapper">
 
-    <select id="count" resultType="int">
+    <select id="count" resultType="Integer">
         <![CDATA[
         SELECT count(board_no)
         FROM board
@@ -19,7 +19,7 @@
 		FROM board
 		WHERE board_no > 0
 		ORDER BY board_no DESC, reg_date DESC
-		LIMIT #{pageStart}, #{boardNumPerPage}
+		LIMIT #{startBoard}, #{boardNumPerPage}
 		]]>
     </select>
 

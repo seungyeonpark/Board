@@ -6,11 +6,10 @@ import lombok.ToString;
 public class PageRequest {
 
     private int page;
-    private int boardNumPerPage;
+    private final int boardNumPerPage = 10;
 
     public PageRequest() {
         this.page = 1;
-        this.boardNumPerPage = 10;
     }
 
     public void setPage(int page) {
@@ -26,8 +25,8 @@ public class PageRequest {
         return page;
     }
 
-    public int getPageStart() {
-        return (this.page - 1) * boardNumPerPage; // 한 페이지 내에서 시작 글
+    public int getStartBoard() {
+        return (this.page - 1) * boardNumPerPage;
     }
 
     public int getBoardNumPerPage() {
