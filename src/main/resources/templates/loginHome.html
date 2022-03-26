@@ -10,12 +10,13 @@
 <div class="board_wrap">
     <div class="board_title">
         <strong th:text="#{page.title}">title</strong>
-        <p th:text="#{page.subtitle}">subtitle</p>
+        <p th:text="|${member.userId}님 안녕하세요|">subtitle</p>
     </div>
     <div class="board_view_wrap">
         <div class="bt_wrap">
-            <a th:href="@{/member/login}" th:text="#{button.login}" class="on">login</a>
-            <a th:href="@{/member/register}" th:text="#{button.join}" class="on">join</a>
+            <form th:action="@{/member/logout}" method="post">
+                <button class="on" type="submit" th:text="#{button.logout}">logout</button>
+            </form>
             <a th:href="@{/board/list}" th:text="#{button.board}" class="on">board</a>
         </div>
     </div>
