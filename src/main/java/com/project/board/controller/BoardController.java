@@ -32,21 +32,21 @@ public class BoardController {
         model.addAttribute("list", service.list(pageRequest));
         model.addAttribute("pagination", pagination);
 
-        return "list";
+        return "board/list";
     }
 
     @GetMapping("/register")
     public String registerForm(Model model) {
 
         model.addAttribute("board", new Board());
-        return "write";
+        return "board/write";
     }
 
     @PostMapping("/register")
     public String register(@Validated Board board, BindingResult bindingResult) throws Exception {
 
         if (bindingResult.hasErrors()) {
-            return "write";
+            return "board/write";
         }
 
         service.register(board);
@@ -59,14 +59,14 @@ public class BoardController {
         log.info("pageRequest = {}", pageRequest);
 
         model.addAttribute("board", service.read(boardNo));
-        return "view";
+        return "board/view";
     }
 
     @GetMapping("/modify/{boardNo}")
     public String modifyForm(@PathVariable Long boardNo, @ModelAttribute PageRequest pageRequest, Model model) throws Exception {
 
         model.addAttribute("board", service.read(boardNo));
-        return "edit";
+        return "board/edit";
     }
 
     @PostMapping("/modify/{boardNo}")
@@ -77,7 +77,7 @@ public class BoardController {
                          RedirectAttributes redirectAttributes) throws Exception {
 
         if (bindingResult.hasErrors()) {
-            return "edit";
+            return "board/edit";
         }
 
         board.setBoardNo(boardNo);

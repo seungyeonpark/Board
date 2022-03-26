@@ -10,17 +10,17 @@
     <div class="board_wrap">
         <div class="header">
             <div class="board_title">
-                <strong th:text="#{page.title}">title</strong>
-                <p th:text="#{page.subtitle}">subtitle</p>
+                <strong th:text="#{page.board.title}">title</strong>
+                <p th:text="#{page.board.subtitle}">subtitle</p>
             </div>
         </div>
         <div class="board_list_wrap">
             <div class="board_list">
                 <div class="top">
-                    <div class="num" th:text="#{label.no}">no</div>
-                    <div class="title" th:text="#{label.title}">title</div>
-                    <div class="writer" th:text="#{label.writer}">writer</div>
-                    <div class="date" th:text="#{label.date}">date</div>
+                    <div class="num" th:text="#{label.board.no}">no</div>
+                    <div class="title" th:text="#{label.board.title}">title</div>
+                    <div class="writer" th:text="#{label.board.writer}">writer</div>
+                    <div class="date" th:text="#{label.board.date}">date</div>
                 </div>
                 <div th:each="board : ${list}">
                     <div class="num" th:text="${board.boardNo}">5</div>
@@ -43,7 +43,7 @@
                    class="bt next" th:if="${pagination.next}">&gt</a>
             </div>
             <div class="bt_wrap">
-                <a href="write.html" th:href="@{/board/register}" class="on" th:text="#{button.write}">write</a>
+                <a href="write.html" th:href="@{/board/register}" class="on" th:text="#{button.register}">write</a>
             </div>
         </div>
     </div>

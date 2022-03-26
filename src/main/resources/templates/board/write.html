@@ -9,14 +9,14 @@
 <body>
     <div class="board_wrap">
         <div class="board_title">
-            <strong th:text="#{page.title}">title</strong>
-            <p th:text="#{page.subtitle}">subtitle</p>
+            <strong th:text="#{page.board.title}">title</strong>
+            <p th:text="#{page.board.subtitle}">subtitle</p>
         </div>
         <form action="/board/register" method="post" class="board_write_wrap">
             <div class="board_write">
                 <div class="title">
                     <dl>
-                        <dt th:text="#{label.title}">title</dt>
+                        <dt th:text="#{label.board.title}">title</dt>
                         <dd>
                             <input type="text" placeholder="제목 입력" th:field="${board.title}" th:errorclass="field-error">
                             <div class="field-error" th:errors="${board.title}">title error</div>
@@ -25,7 +25,7 @@
                 </div>
                 <div class="info">
                     <dl>
-                        <dt th:text="#{label.writer}">writer</dt>
+                        <dt th:text="#{label.board.writer}">writer</dt>
                         <dd>
                             <input type="text" placeholder="글쓴이 입력" th:field="${board.writer}" th:errorclass="field-error">
                             <div class="field-error" th:errors="${board.writer}">writer error</div>
@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="bt_wrap">
-                <input type="submit" class="on" th:value="#{button.write}">
+                <input type="submit" class="on" th:value="#{button.register}">
                 <a href="index.html" th:href="@{/board/list}" th:text="#{button.cancel}">cancel</a>
             </div>
         </form>
