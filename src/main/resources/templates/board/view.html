@@ -25,8 +25,12 @@
                         <dd th:text="${board.writer}">홍길동</dd>
                     </dl>
                     <dl>
-                        <dt th:Text="#{label.board.date}">date</dt>
+                        <dt th:text="#{label.board.date}">date</dt>
                         <dd th:text="${{board.regDate}}">2021.1.16</dd>
+                    </dl>
+                    <dl th:if="${board.filename}">
+                        <dt th:text="#{label.board.file}">file</dt>
+                        <dd><a th:text="${board.filename}" th:href="@{${board.filepath}}">filename</a></dd>
                     </dl>
                 </div>
                 <div class="cont" th:text="${board.content}">글 내용이 들어갑니다</div>

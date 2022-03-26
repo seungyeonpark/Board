@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Slf4j
@@ -43,13 +44,14 @@ public class BoardController {
     }
 
     @PostMapping("/register")
-    public String register(@Validated Board board, BindingResult bindingResult) throws Exception {
+    public String register(@Validated Board board, BindingResult bindingResult, MultipartFile file) throws Exception {
 
         if (bindingResult.hasErrors()) {
             return "board/write";
         }
 
-        service.register(board);
+        service.register(board, file);
+
         return "redirect:/board/list";
     }
 
@@ -74,16 +76,15 @@ public class BoardController {
                          @Validated Board board,
                          BindingResult bindingResult,
                          @ModelAttribute PageRequest pageRequest,
+                         MultipartFile file,
                          RedirectAttributes redirectAttributes) throws Exception {
 
         if (bindingResult.hasErrors()) {
             return "board/edit";
         }
 
-        board.setBoardNo(boardNo);
-        service.modify(board);
+        service.modify(boardNo, file);
 
-        log.info("pageRequest = {}", pageRequest);
         redirectAttributes.addAttribute("page", pageRequest.getPage());
 
         return "redirect:/board/list";
@@ -96,7 +97,6 @@ public class BoardController {
 
         service.remove(boardNo);
 
-        log.info("pageRequest = {}", pageRequest);
         redirectAttributes.addAttribute("page", pageRequest.getPage());
 
         return "redirect:/board/list";

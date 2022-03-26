@@ -23,6 +23,9 @@ public class Board {
 
     private String content;
 
+    private String filename;
+    private String filepath;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDateTime regDate;
 }

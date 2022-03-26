@@ -5,8 +5,12 @@ import com.project.board.domain.PageRequest;
 import com.project.board.mapper.BoardMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @Service
@@ -25,7 +29,9 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public void register(Board board) throws Exception {
+    public void register(Board board, MultipartFile file) throws Exception {
+
+        setFileNameAndPath(board, file);
         mapper.create(board);
     }
 
@@ -35,12 +41,53 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public void modify(Board board) throws Exception {
+    public void modify(Long boardNo, MultipartFile file) throws Exception {
+
+        Board board = mapper.read(boardNo);
+
+        removeExistingFile(board.getFilename());
+
+        setFileNameAndPath(board, file);
+
         mapper.update(board);
     }
 
     @Override
     public void remove(Long boardNo) throws Exception {
+
+        Board board = mapper.read(boardNo);
+
+        removeExistingFile(board.getFilename());
+
         mapper.delete(boardNo);
+    }
+
+    private void removeExistingFile(String fileName) {
+        File file = new File(getFilePath() + "\\" + fileName);
+
+        if (file.exists()) {
+            file.delete();
+        }
+    }
+
+    private void setFileNameAndPath(Board board, MultipartFile file) throws IOException {
+
+        if (file.isEmpty()) {
+            return;
+        }
+
+        UUID uuid = UUID.randomUUID();
+        String filename = uuid + "_" + file.getOriginalFilename();
+
+        File savedFile = new File(getFilePath(), filename);
+
+        file.transferTo(savedFile);
+
+        board.setFilename(filename);
+        board.setFilepath("/files/" + filename);
+    }
+
+    private String getFilePath() {
+        return System.getProperty("user.dir") + "\\src\\main\\resources\\static\\files";
     }
 }

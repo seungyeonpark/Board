@@ -24,20 +24,20 @@
     </select>
 
     <insert id="create" useGeneratedKeys="true" keyProperty="boardNo">
-        INSERT INTO board (title, content, writer)
-        VALUES (#{title}, #{content}, #{writer})
+        INSERT INTO board (title, content, writer, filename, filepath)
+        VALUES (#{title}, #{content}, #{writer}, #{filename}, #{filepath})
     </insert>
 
     <select id="read" resultType="Board">
-        SELECT board_no, title, content, writer, reg_date
+        SELECT board_no, title, content, writer, filename, filepath, reg_date
         FROM board
         WHERE board_no = #{boardNo}
     </select>
 
     <update id="update">
         UPDATE board
-        SET title = #{title}, content = #{content}
-        WHERE board_no = #{boardNo}
+        SET title=#{title}, content=#{content}, filename=#{filename}, filepath=#{filepath}
+        WHERE board_no=#{boardNo}
     </update>
 
     <delete id="delete">

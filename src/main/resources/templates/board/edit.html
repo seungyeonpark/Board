@@ -12,7 +12,7 @@
             <strong th:text="#{page.board.title}">title</strong>
             <p th:text="#{page.board.subtitle}">subtitle</p>
         </div>
-        <form action="" method="post" class="board_write_wrap">
+        <form action="" method="post" enctype="multipart/form-data" class="board_write_wrap">
             <div class="board_write">
                 <div class="title">
                     <dl>
@@ -31,6 +31,9 @@
                 </div>
                 <div class="cont">
                     <textarea placeholder="내용 입력" th:field="${board.content}">글 내용이 들어갑니다.</textarea>
+                </div>
+                <div class="cont">
+                    <input type="file" name="file">
                 </div>
             </div>
             <div class="bt_wrap">
