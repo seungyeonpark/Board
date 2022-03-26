@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <link rel="stylesheet" href="../css/css.css" th:href="@{/css/css.css}">
+</head>
+<body>
+    <section class="login-form">
+        <h1 th:text="#{page.member.login.title}">title</h1>
+        <form action="/member/login" method="post" th:object="${member}">
+            <div th:if="${#fields.hasGlobalErrors()}">
+                <p class="field-error" th:each="err : ${#fields.globalErrors()}"
+                   th:text="${err}">전체 오류 메시지</p>
+            </div>
+            <div class="int-area">
+                <input type="text" th:placeholder="#{label.member.id}" th:field="*{userId}" th:errorclass="field-error">
+                <div class="field-error" th:errors="*{userId}">userId error</div>
+            </div>
+            <div class="int-area">
+                <input type="password" th:placeholder="#{label.member.pw}" th:field="*{userPw}" th:errorclass="field-error">
+                <div class="field-error" th:errors="*{userPw}">userPw error</div>
+            </div>
+            <div class="btn-area">
+                <input type="submit" id="btn" th:value="#{button.login}">
+            </div>
+        </form>
+        <div class="caption">
+            <a th:href="@{/member/register}" th:text="#{label.member.register}">register</a>
+        </div>
+    </section>
+</body>
+</html>
