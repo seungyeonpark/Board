@@ -9,7 +9,7 @@
 <body>
     <section class="login-form">
         <h1 th:text="#{page.member.login.title}">title</h1>
-        <form action="/member/login" method="post" th:object="${member}">
+        <form th:action="@{/member/login(redirectURL=${redirectURL})}" method="post" th:object="${member}">
             <div th:if="${#fields.hasGlobalErrors()}">
                 <p class="field-error" th:each="err : ${#fields.globalErrors()}"
                    th:text="${err}">전체 오류 메시지</p>

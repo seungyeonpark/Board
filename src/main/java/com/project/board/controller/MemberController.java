@@ -42,19 +42,22 @@ public class MemberController {
     }
 
     @GetMapping("/login")
-    public String loginForm(Model model) {
+    public String loginForm(@RequestParam(defaultValue="/") String redirectURL, Model model) {
 
         model.addAttribute("member", new Member());
+        model.addAttribute("redirectURL", redirectURL);
+
         return "member/login";
     }
 
     @PostMapping("/login")
     public String login(@Validated Member member,
                         BindingResult bindingResult,
-                        @RequestParam(defaultValue = "/") String redirectURL,
+                        @RequestParam(defaultValue="/") String redirectURL,
                         HttpServletRequest request) throws Exception {
 
         log.info("member = {}", member);
+        log.info("redirectURL = {}", redirectURL);
         log.info("bindingResult = {}", bindingResult);
 
         if (bindingResult.hasErrors()) {
@@ -72,7 +75,7 @@ public class MemberController {
 
         HttpSession session = request.getSession();
         session.setAttribute("loginMember", loginMember);
-
+        
         return "redirect:" + redirectURL;
     }
 }
