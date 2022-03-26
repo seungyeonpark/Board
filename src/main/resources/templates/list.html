@@ -25,9 +25,8 @@
                 <div th:each="board : ${list}">
                     <div class="num" th:text="${board.boardNo}">5</div>
                     <div class="title">
-                        <a href="view.html" th:href="@{/board/read/{boardNo}(boardNo=${board.boardNo})}" th:text="${board.title}">
-                            글 제목이 들어갑니다.
-                        </a>
+                        <a href="view.html" th:href="@{/board/read/{boardNo}(boardNo=${board.boardNo}, page=${pageRequest.page})}"
+                           th:text="${board.title}">글 제목이 들어갑니다.</a>
                     </div>
                     <div class="writer" th:text="${board.writer}">홍길동</div>
                     <div class="date" th:text="${{board.regDate}}">2022.2.15</div>
@@ -41,7 +40,7 @@
                    th:href="@{/board/list(page=${i})}"
                    th:text="${i}" class="num">1</a>
                 <a th:href="@{/board/list(page=${pagination.endPage+1})}"
-                   class="bt next" th:if="${pagination.next}">&gt;</a>
+                   class="bt next" th:if="${pagination.next}">&gt</a>
             </div>
             <div class="bt_wrap">
                 <a href="write.html" th:href="@{/board/register}" class="on" th:text="#{button.write}">write</a>

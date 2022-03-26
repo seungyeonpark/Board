@@ -32,10 +32,10 @@
                 <div class="cont" th:text="${board.content}">글 내용이 들어갑니다</div>
             </div>
             <div class="bt_wrap">
-                <a href="index.html" th:href="@{/board/list}" class="on" th:text="#{button.list}">list</a>
-                <a href="edit.html" th:href="@{/board/modify/{boardNo}(boardNo=${board.boardNo})}"
+                <a href="index.html" th:href="@{/board/list(page=${pageRequest.page})}" class="on" th:text="#{button.list}">list</a>
+                <a href="edit.html" th:href="@{/board/modify/{boardNo}(boardNo=${board.boardNo}, page=${pageRequest.page})}"
                    th:text="#{button.edit}" class="on">edit</a>
-                <a href="edit.html" th:href="@{/board/remove/{boardNo}(boardNo=${board.boardNo})}"
+                <a href="edit.html" th:href="@{/board/remove/{boardNo}(boardNo=${board.boardNo}, page=${pageRequest.page})}"
                    th:text="#{button.delete}" class="on">delete</a>
             </div>
         </div>

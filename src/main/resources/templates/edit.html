@@ -35,7 +35,8 @@
             </div>
             <div class="bt_wrap">
                 <input type="submit" class="on" th:value="#{button.edit}">
-                <a href="view.html" th:href="@{/board/list}" th:text="#{button.cancel}">cancel</a>
+                <input type="hidden" name="page" th:value="${pageRequest.page}">
+                <a href="view.html" th:href="@{/board/list(page=${pageRequest.page})}" th:text="#{button.cancel}">cancel</a>
             </div>
         </form>
     </div>

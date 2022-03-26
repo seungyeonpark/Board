@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Slf4j
 @Controller
@@ -35,9 +36,9 @@ public class BoardController {
     }
 
     @GetMapping("/register")
-    public String registerForm(Board board, Model model) {
+    public String registerForm(Model model) {
 
-        model.addAttribute("board", board);
+        model.addAttribute("board", new Board());
         return "write";
     }
 
@@ -53,21 +54,27 @@ public class BoardController {
     }
 
     @GetMapping("/read/{boardNo}")
-    public String read(@PathVariable Long boardNo, Model model) throws Exception {
+    public String read(@PathVariable Long boardNo, @ModelAttribute PageRequest pageRequest, Model model) throws Exception {
+
+        log.info("pageRequest = {}", pageRequest);
 
         model.addAttribute("board", service.read(boardNo));
         return "view";
     }
 
     @GetMapping("/modify/{boardNo}")
-    public String modifyForm(@PathVariable Long boardNo, Model model) throws Exception {
+    public String modifyForm(@PathVariable Long boardNo, @ModelAttribute PageRequest pageRequest, Model model) throws Exception {
 
         model.addAttribute("board", service.read(boardNo));
         return "edit";
     }
 
     @PostMapping("/modify/{boardNo}")
-    public String modify(@PathVariable Long boardNo, @Validated Board board, BindingResult bindingResult) throws Exception {
+    public String modify(@PathVariable Long boardNo,
+                         @Validated Board board,
+                         BindingResult bindingResult,
+                         @ModelAttribute PageRequest pageRequest,
+                         RedirectAttributes redirectAttributes) throws Exception {
 
         if (bindingResult.hasErrors()) {
             return "edit";
@@ -76,13 +83,22 @@ public class BoardController {
         board.setBoardNo(boardNo);
         service.modify(board);
 
+        log.info("pageRequest = {}", pageRequest);
+        redirectAttributes.addAttribute("page", pageRequest.getPage());
+
         return "redirect:/board/list";
     }
 
     @GetMapping("/remove/{boardNo}")
-    public String remove(@PathVariable Long boardNo) throws Exception {
+    public String remove(@PathVariable Long boardNo,
+                         @ModelAttribute PageRequest pageRequest,
+                         RedirectAttributes redirectAttributes) throws Exception {
 
         service.remove(boardNo);
+
+        log.info("pageRequest = {}", pageRequest);
+        redirectAttributes.addAttribute("page", pageRequest.getPage());
+
         return "redirect:/board/list";
     }
 }
