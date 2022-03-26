@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="../css/css.css" th:href="@{/css/css.css}">
+</head>
+<body>
+    <section class="login-form">
+        <h1 th:text="#{page.member.join.title}">title</h1>
+        <form action="/member/register" method="post">
+            <div class="int-area">
+                <input type="text" id="userId" th:field="${member.userId}" required>
+                <label for="userId" th:text="#{label.member.id}">id</label>
+            </div>
+            <div class="int-area">
+                <input type="password" id="userPw" th:field="${member.userPw}" required>
+                <label for="userPw" th:text="#{label.member.pw}">pw</label>
+            </div>
+            <div class="btn-area">
+                <input type="submit" th:value="#{button.register}">
+            </div>
+        </form>
+        <div class="caption">
+            <a href="@{/member/login}" th:text="#{label.member.registered}">registered</a>
+            <a href="/" th:text="#{button.cancel}">cancel</a>
+        </div>
+    </section>
+</body>
+</html>
