@@ -14,7 +14,7 @@
     </div>
     <div class="board_view_wrap">
         <div class="bt_wrap">
-            <a href="#" th:text="#{page.member.login.title}" class="on">login</a>
+            <a th:href="@{/member/login}" th:text="#{page.member.login.title}" class="on">login</a>
             <a th:href="@{/member/register}" th:text="#{page.member.join.title}" class="on">join</a>
             <a th:href="@{/board/list}" th:text="#{page.board.title}" class="on">board</a>
         </div>

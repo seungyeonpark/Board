@@ -15,4 +15,9 @@ public class MemberServiceImpl implements MemberService {
     public void register(Member member) throws Exception{
         mapper.create(member);
     }
+
+    @Override
+    public Member login(Member member) throws Exception {
+        return mapper.login(member);
+    }
 }

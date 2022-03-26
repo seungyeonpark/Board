@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @ToString
 public class Member {
 
-    private int userNo;
+    private Integer userNo;
 
     @NotBlank
     private String userId;

@@ -10,4 +10,10 @@
         VALUES (#{userId}, #{userPw})
     </insert>
 
+    <select id="login" resultType="Member">
+        SELECT user_no, user_id, user_pw, reg_date
+        FROM member
+        WHERE user_id=#{userId} and user_pw=#{userPw}
+    </select>
+
 </mapper>
