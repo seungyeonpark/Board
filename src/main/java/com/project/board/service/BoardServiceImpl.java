@@ -19,8 +19,8 @@ public class BoardServiceImpl implements BoardService{
     private final BoardMapper mapper;
 
     @Override
-    public Integer count() throws Exception {
-        return mapper.count();
+    public Integer count(PageRequest pageRequest) throws Exception {
+        return mapper.count(pageRequest);
     }
 
     @Override
@@ -41,9 +41,7 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public void modify(Long boardNo, MultipartFile file) throws Exception {
-
-        Board board = mapper.read(boardNo);
+    public void modify(Board board, MultipartFile file) throws Exception {
 
         removeExistingFile(board.getFilename());
 

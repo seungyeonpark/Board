@@ -39,7 +39,7 @@
             <div class="bt_wrap">
                 <input type="submit" class="on" th:value="#{button.edit}">
                 <input type="hidden" name="page" th:value="${pageRequest.page}">
-                <a href="view.html" th:href="@{/board/list(page=${pageRequest.page})}" th:text="#{button.cancel}">cancel</a>
+                <a th:href="@{/board/list(page=${pageRequest.page}, searchType=${pageRequest.searchType}, keyword=${pageRequest.keyword})}" th:text="#{button.cancel}">cancel</a>
             </div>
         </form>
     </div>

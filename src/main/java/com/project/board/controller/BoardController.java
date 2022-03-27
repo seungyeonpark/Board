@@ -3,6 +3,7 @@ package com.project.board.controller;
 import com.project.board.domain.Board;
 import com.project.board.domain.PageRequest;
 import com.project.board.domain.Pagination;
+import com.project.board.domain.SearchTypeCodeValue;
 import com.project.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +14,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -27,9 +30,13 @@ public class BoardController {
 
         log.info("pageRequest = {}", pageRequest);
 
-        Integer totalCount = service.count();
+        Integer totalCount = service.count(pageRequest);
+
         Pagination pagination = new Pagination(totalCount, pageRequest);
 
+        List<SearchTypeCodeValue> searchTypeCodeValueList = SearchTypeCodeValue.getSearchTypeCodeValueList();
+
+        model.addAttribute("searchTypeCodeValueList", searchTypeCodeValueList);
         model.addAttribute("list", service.list(pageRequest));
         model.addAttribute("pagination", pagination);
 
@@ -64,28 +71,34 @@ public class BoardController {
         return "board/view";
     }
 
-    @GetMapping("/modify/{boardNo}")
-    public String modifyForm(@PathVariable Long boardNo, @ModelAttribute PageRequest pageRequest, Model model) throws Exception {
+    @GetMapping("/modify")
+    public String modifyForm(@RequestParam Long boardNo, @ModelAttribute PageRequest pageRequest, Model model) throws Exception {
+
+        log.info("pageRequest = {}", pageRequest);
 
         model.addAttribute("board", service.read(boardNo));
         return "board/edit";
     }
 
-    @PostMapping("/modify/{boardNo}")
-    public String modify(@PathVariable Long boardNo,
-                         @Validated Board board,
+    @PostMapping("/modify")
+    public String modify(@Validated Board board,
                          BindingResult bindingResult,
                          @ModelAttribute PageRequest pageRequest,
                          MultipartFile file,
                          RedirectAttributes redirectAttributes) throws Exception {
 
+        log.info("board = {}", board);
+        log.info("pageRequest = {}", pageRequest);
+
         if (bindingResult.hasErrors()) {
             return "board/edit";
         }
 
-        service.modify(boardNo, file);
+        service.modify(board, file);
 
         redirectAttributes.addAttribute("page", pageRequest.getPage());
+        redirectAttributes.addAttribute("searchType", pageRequest.getSearchType());
+        redirectAttributes.addAttribute("keyword", pageRequest.getKeyword());
 
         return "redirect:/board/list";
     }
@@ -98,6 +111,8 @@ public class BoardController {
         service.remove(boardNo);
 
         redirectAttributes.addAttribute("page", pageRequest.getPage());
+        redirectAttributes.addAttribute("searchType", pageRequest.getSearchType());
+        redirectAttributes.addAttribute("keyword", pageRequest.getKeyword());
 
         return "redirect:/board/list";
     }
