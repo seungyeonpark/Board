@@ -54,6 +54,7 @@ public class MemberController {
     public String login(@Validated Member member,
                         BindingResult bindingResult,
                         @RequestParam(defaultValue="/") String redirectURL,
+                        Model model,
                         HttpServletRequest request) throws Exception {
 
         log.info("member = {}", member);
@@ -61,6 +62,7 @@ public class MemberController {
         log.info("bindingResult = {}", bindingResult);
 
         if (bindingResult.hasErrors()) {
+            model.addAttribute("redirectURL", redirectURL);
             return "member/login";
         }
 
