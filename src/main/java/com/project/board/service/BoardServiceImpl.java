@@ -70,7 +70,7 @@ public class BoardServiceImpl implements BoardService{
 
     private void setFileNameAndPath(Board board, MultipartFile file) throws IOException {
 
-        if (file.isEmpty()) {
+        if (file == null || file.isEmpty()) {
             return;
         }
 
