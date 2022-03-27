@@ -3,8 +3,10 @@ DROP TABLE IF EXISTS Board;
 CREATE TABLE Board (
 	board_no INT NOT NULL AUTO_INCREMENT,
 	title VARCHAR(200) NOT NULL,
-	content TEXT NULL,
+	content TEXT,
 	writer VARCHAR(50) NOT NULL,
+	filename VARCHAR(150),
+	filepath VARCHAR(300),
 	reg_date TIMESTAMP NOT NULL DEFAULT now(),
 	PRIMARY KEY(board_no)
 );
