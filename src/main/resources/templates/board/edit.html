@@ -18,7 +18,7 @@
                     <dl>
                         <dt th:text="#{label.board.title}">title</dt>
                         <dd>
-                            <input type="text" placeholder="제목 입력" value="글 제목이 들어갑니다" th:field="${board.title}" th:errorclass="field-error">
+                            <input type="text" placeholder="제목 입력" th:field="${board.title}" th:errorclass="field-error">
                             <div class="field-error" th:errors="${board.title}">title error</div>
                         </dd>
                     </dl>
@@ -26,7 +26,7 @@
                 <div class="info">
                     <dl>
                         <dt th:text="#{label.board.writer}">writer</dt>
-                        <dd><input type="text" placeholder="글쓴이 입력" value="홍길동" th:field="${board.writer}" readonly></dd>
+                        <dd><input type="text" placeholder="글쓴이 입력" th:field="${board.writer}" readonly></dd>
                     </dl>
                 </div>
                 <div class="cont">

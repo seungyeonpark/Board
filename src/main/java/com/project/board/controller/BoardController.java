@@ -44,7 +44,7 @@ public class BoardController {
     }
 
     @GetMapping("/register")
-    public String registerForm(Model model) {
+    public String registerForm(@ModelAttribute PageRequest pageRequest, Model model) {
 
         model.addAttribute("board", new Board());
         return "board/write";
@@ -96,9 +96,7 @@ public class BoardController {
 
         service.modify(board, file);
 
-        redirectAttributes.addAttribute("page", pageRequest.getPage());
-        redirectAttributes.addAttribute("searchType", pageRequest.getSearchType());
-        redirectAttributes.addAttribute("keyword", pageRequest.getKeyword());
+        redirectPageRequest(redirectAttributes, pageRequest);
 
         return "redirect:/board/list";
     }
@@ -110,10 +108,14 @@ public class BoardController {
 
         service.remove(boardNo);
 
+        redirectPageRequest(redirectAttributes, pageRequest);
+
+        return "redirect:/board/list";
+    }
+
+    private void redirectPageRequest(RedirectAttributes redirectAttributes, PageRequest pageRequest) {
         redirectAttributes.addAttribute("page", pageRequest.getPage());
         redirectAttributes.addAttribute("searchType", pageRequest.getSearchType());
         redirectAttributes.addAttribute("keyword", pageRequest.getKeyword());
-
-        return "redirect:/board/list";
     }
 }

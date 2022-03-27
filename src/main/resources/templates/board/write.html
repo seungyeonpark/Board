@@ -42,7 +42,8 @@
             </div>
             <div class="bt_wrap">
                 <input type="submit" class="button" th:value="#{button.register}">
-                <a class="button" th:href="@{/board/list}" th:text="#{button.list}">list</a>
+                <a class="button" th:href="@{/board/list(page=${pageRequest.page}, searchType=${pageRequest.searchType},
+                    keyword=${pageRequest.keyword})}" th:text="#{button.list}">list</a>
             </div>
         </form>
     </div>

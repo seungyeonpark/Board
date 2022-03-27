@@ -56,7 +56,8 @@
                 </form>
             </div>
             <div class="bt_wrap">
-                <a th:href="@{/board/register}" class="on" th:text="#{button.register}">write</a>
+                <a th:href="@{/board/register(page=${pageRequest.page}, searchType=${pageRequest.searchType},
+                    keyword=${pageRequest.keyword})}" class="on" th:text="#{button.register}">write</a>
                 <a href="/" class="on" th:text="#{button.home}">home</a>
             </div>
         </div>
