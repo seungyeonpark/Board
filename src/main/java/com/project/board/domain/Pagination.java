@@ -27,7 +27,7 @@ public class Pagination {
         endPage = (int)(Math.ceil(pageRequest.getPage() / (double)displayListNum) * displayListNum);
         startPage = (endPage - displayListNum) + 1;
 
-        int lastPage = (int)(Math.ceil(totalCount / (double)pageRequest.getBoardNumPerPage()));
+        int lastPage = Math.max((int)(Math.ceil(totalCount / (double)pageRequest.getBoardNumPerPage())), 1);
 
         if (endPage > lastPage) {
             endPage = lastPage;
