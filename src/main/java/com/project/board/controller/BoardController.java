@@ -89,6 +89,7 @@ public class BoardController {
 
         log.info("board = {}", board);
         log.info("pageRequest = {}", pageRequest);
+        log.info("file = {}", file);
 
         if (bindingResult.hasErrors()) {
             return "board/edit";
