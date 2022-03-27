@@ -18,13 +18,15 @@
                 <input type="password" id="userPw" th:field="${member.userPw}" required>
                 <label for="userPw" th:text="#{label.member.pw}">pw</label>
             </div>
-            <div class="btn-area">
+            <div class="int-area">
                 <input type="submit" id="btn" th:value="#{button.join}">
             </div>
         </form>
         <div class="caption">
             <a href="@{/member/login}" th:text="#{label.member.registered}">registered</a>
-            <a href="/" th:text="#{button.cancel}">cancel</a>
+        </div>
+        <div class="caption">
+            <a href="/" th:text="#{button.home}">home</a>
         </div>
     </section>
 </body>

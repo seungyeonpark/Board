@@ -8,17 +8,17 @@
 </head>
 <body>
 <div class="board_wrap">
-    <div class="board_title">
-        <strong th:text="#{page.title}">title</strong>
-        <p th:text="|${member.userId}님 안녕하세요|">subtitle</p>
-    </div>
-    <div class="board_view_wrap">
-        <div class="bt_wrap">
-            <form th:action="@{/member/logout}" method="post">
-                <button class="on" type="submit" th:text="#{button.logout}">logout</button>
-            </form>
-            <a th:href="@{/board/list}" th:text="#{button.board}" class="on">board</a>
+    <div class="home">
+        <div class="board_title">
+            <strong th:text="#{page.title}">title</strong>
+            <p th:text="|${member.userId}님 안녕하세요|">subtitle</p>
         </div>
+    </div>
+    <div class="logout_wrap">
+        <form th:action="@{/member/logout}" method="post" class="logout">
+            <button type="submit" th:text="#{button.logout}" class="logoutBtn">logout</button>
+        </form>
+        <a th:href="@{/board/list}" th:text="#{button.board}" class="logout">board</a>
     </div>
 </div>
 </body>

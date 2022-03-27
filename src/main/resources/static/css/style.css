@@ -15,7 +15,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 }
 
 ul, li {
@@ -111,7 +110,7 @@ a {
 
 .board_list .title {
     width: 60%;
-    text-align: left;
+    text-align: center;
 }
 
 .board_list .top .title {
@@ -302,12 +301,13 @@ a {
 
 .login-form {
     position: relative;
+    margin-top: 60px;
 }
 
 .login-form h1 {
     font-size: 32px; color:#000;
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
 }
 
 .int-area {
@@ -323,8 +323,7 @@ a {
 .int-area input {
     width: 100%;
     padding: 20px 10px 10px;
-    border: none;
-    border-bottom: 1px solid #999;
+    border: 1px solid #999;
     font-size: 18px;
     outline: none;
 }
@@ -342,13 +341,6 @@ a {
     color: red !important;
     animation: warning .3s ease;
     animation-iteration-count: 3;
-}
-
-@keyframes warning {
-    0% {transform: translateX(-8px);}
-    25% {transform: translateX(8px);}
-    50% {transform: translateX(-8px);}
-    75% {transform: translateX(8px);}
 }
 
 .int-area input:focus + label,
@@ -388,3 +380,52 @@ a {
     border-color: #dc3545;
     color: #dc3545;
 }
+
+.button {
+     display: inline-block;
+     min-width: 80px;
+     margin-left: 10px;
+     padding: 10px;
+     border: 1px solid #000;
+     border-radius: 2px;
+     font-size: 1.4rem;
+ }
+
+ .file {
+      display: inline-block;
+      min-width: 80px;
+      margin-left: 10px;
+      padding: 10px;
+      border: none;
+      font-size: 1.4rem;
+  }
+
+.home {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logout_wrap {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 0;
+}
+
+.logout {
+     display: inline-block;
+     min-width: 80px;
+     margin-left: 10px;
+     padding: 10px;
+     border: 1px solid #000;
+     border-radius: 10%;
+     font-size: 1.4rem;
+     background: #000;
+     color: #fff;
+}
+
+.logoutBtn {
+     background: #000;
+     color: #fff;
+     border: none;
+}
+

@@ -33,13 +33,15 @@
                     <textarea placeholder="내용 입력" th:field="${board.content}">글 내용이 들어갑니다.</textarea>
                 </div>
                 <div class="cont">
-                    <input type="file" name="file">
+                    <input type="file" name="file" class="file">
                 </div>
             </div>
             <div class="bt_wrap">
-                <input type="submit" class="on" th:value="#{button.edit}">
+                <input type="submit" class="button" th:value="#{button.edit}">
                 <input type="hidden" name="page" th:value="${pageRequest.page}">
-                <a th:href="@{/board/list(page=${pageRequest.page}, searchType=${pageRequest.searchType}, keyword=${pageRequest.keyword})}" th:text="#{button.cancel}">cancel</a>
+                <a class="button" th:href="@{/board/list(page=${pageRequest.page},
+                searchType=${pageRequest.searchType},
+                keyword=${pageRequest.keyword})}" th:text="#{button.list}">list</a>
             </div>
         </form>
     </div>

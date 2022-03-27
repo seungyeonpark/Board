@@ -37,12 +37,12 @@
                     <div class="field-error" th:errors="${board.content}">content error</div>
                 </div>
                 <div class="cont">
-                    <input type="file" name="file">
+                    <input type="file" name="file" class="file">
                 </div>
             </div>
             <div class="bt_wrap">
-                <input type="submit" class="on" th:value="#{button.register}">
-                <a href="index.html" th:href="@{/board/list}" th:text="#{button.cancel}">cancel</a>
+                <input type="submit" class="button" th:value="#{button.register}">
+                <a class="button" th:href="@{/board/list}" th:text="#{button.list}">list</a>
             </div>
         </form>
     </div>

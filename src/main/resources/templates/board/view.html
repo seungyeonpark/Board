@@ -36,11 +36,15 @@
                 <div class="cont" th:text="${board.content}">글 내용이 들어갑니다</div>
             </div>
             <div class="bt_wrap">
-                <a th:href="@{/board/list(page=${pageRequest.page}, searchType=${pageRequest.searchType}, keyword=${pageRequest.keyword})}" class="on" th:text="#{button.list}">list</a>
-                <a th:href="@{/board/modify(boardNo=${board.boardNo}, page=${pageRequest.page}, searchType=${pageRequest.searchType}, keyword=${pageRequest.keyword})}"
-                   th:text="#{button.edit}" class="on">edit</a>
-                <a th:href="@{/board/remove/{boardNo}(boardNo=${board.boardNo}, page=${pageRequest.page}, searchType=${pageRequest.searchType}, keyword=${pageRequest.keyword})}"
-                   th:text="#{button.delete}" class="on">delete</a>
+                <a th:href="@{/board/list(page=${pageRequest.page},
+                    searchType=${pageRequest.searchType}, keyword=${pageRequest.keyword})}"
+                    class="on" th:text="#{button.list}">list</a>
+                <a th:href="@{/board/modify(boardNo=${board.boardNo}, page=${pageRequest.page},
+                    searchType=${pageRequest.searchType}, keyword=${pageRequest.keyword})}"
+                    th:text="#{button.edit}" class="on">edit</a>
+                <a th:href="@{/board/remove/{boardNo}(boardNo=${board.boardNo},
+                    page=${pageRequest.page}, searchType=${pageRequest.searchType}, keyword=${pageRequest.keyword})}"
+                    th:text="#{button.delete}" class="on">delete</a>
             </div>
         </div>
     </div>
